@@ -1,0 +1,1 @@
+# URL Shortner by Tim KThis is a simple URL Shortening service written in Node.Js and Express.It provides two RESTful endpoints to POST a Url to be Shortened and to GET the real URL from a Short-URL.This app can either be run locally using the command `npm run start`, or can be hosted on Heroku - an example of therunning app on Heroku is:  
