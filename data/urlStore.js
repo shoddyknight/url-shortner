@@ -33,7 +33,7 @@ const getShortURL = (longURL, cryptoRandomString = defaultCryptoRandomString) =>
 
   if (existingShortURL) {
     return {
-      shortUrl: existingShortURL,
+      shortURL: existingShortURL,
       urlExists: true,
     };
   }
@@ -44,7 +44,7 @@ const getShortURL = (longURL, cryptoRandomString = defaultCryptoRandomString) =>
   urlMapping[shortURL] = longURL;
 
   return {
-    shortUrl: shortURL,
+    shortURL,
     urlExists: false,
   };
 };

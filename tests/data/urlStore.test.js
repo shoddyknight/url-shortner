@@ -35,7 +35,7 @@ describe('urlStore', () => {
       const actual = getShortURL('HelloThere', cryptoRandomString);
 
       expect(actual).toMatchObject({
-        shortUrl: expected,
+        shortURL: expected,
         urlExists: false,
       });
     });
@@ -51,7 +51,7 @@ describe('urlStore', () => {
       const actual = getShortURL('HelloThere', cryptoRandomString);
 
       expect(actual).toMatchObject({
-        shortUrl: expected,
+        shortURL: expected,
         urlExists: true,
       });
     });
