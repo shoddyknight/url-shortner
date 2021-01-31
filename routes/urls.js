@@ -1,5 +1,8 @@
-var express = require('express');
-var router = express.Router();
+import express from ('express');
+
+import urlStore from '../data/urlStore';
+
+const router = express.Router();
 
 /* GET all URLs. */
 router.get('/', function (req, res, next) {
@@ -12,19 +15,37 @@ router.get('/', function (req, res, next) {
  * GET long URLs.
  * Pass in a short URL and return the mapped long URL
  */
-router.get('/{url}', function (req, res, next) {
+router.get('/:url', function (req, res, next) {
+  const shortURL = req.params.url;
   // TODO: if short-URL doesn't exist, send 404, else send 200 and long-url
-  res.send('Long-URL');
+  const longURL = urlStore.getLongURL(shortURL);
+
+  if (!longURL) {
+    res.status(404).(`Long URL not found for: ${shortURL}`);
+  } else {
+    res.status(200).send(longURL);
+  }
 });
 
 /**
  * POST Long URL
  * Request a short-url for the given long url
+ *
+ * Returns 200 if the URL is already mapped or 201 if the mapping was created
  */
-router.get('/{url}', function (req, res, next) {
-  // TODO: if URL already exists, send 200 and send back short-url, else send 201 and short-url
+router.post('/:url', function (req, res, next) {
+  const longURL = req.params.url;
 
-  res.send('Short-URL');
+  const {
+    shortURL,
+    urlExists = false,
+  } = urlStore.getShortURL(longURL);
+
+  if (urlExists) {
+    res.status(200).send(shortURL);
+  } else {
+    res.status(201).send(shortURL);
+  }
 });
 
 module.exports = router;
