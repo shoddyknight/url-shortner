@@ -1,6 +1,6 @@
-import express from ('express');
+const express = require('express');
 
-import urlStore from '../data/urlStore';
+const urlStore = require('../data/urlStore');
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.get('/:url', function (req, res, next) {
   const longURL = urlStore.getLongURL(shortURL);
 
   if (!longURL) {
-    res.status(404).(`Long URL not found for: ${shortURL}`);
+    res.status(404).send(`Long URL not found for: ${shortURL}`);
   } else {
     res.status(200).send(longURL);
   }

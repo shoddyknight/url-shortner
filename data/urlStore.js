@@ -3,4 +3,9 @@
 
 const getLongURL = shortURL => '';
 
-const getShortURL = longURL = {shortUrl: '', urlExists: false };
+const getShortURL = longURL => ({shortUrl: '', urlExists: false });
+
+module.exports = {
+  getLongURL,
+  getShortURL,
+};
