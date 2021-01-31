@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
  */
 router.get('/:url', (req, res) => {
   const shortURL = req.params.url;
-  // TODO: if short-URL doesn't exist, send 404, else send 200 and long-url
   const longURL = urlStore.getLongURL(shortURL);
 
   if (!longURL) {
