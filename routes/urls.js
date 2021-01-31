@@ -5,17 +5,16 @@ const urlStore = require('../data/urlStore');
 const router = express.Router();
 
 /* GET all URLs. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res) => {
   // Not enabled
   res.status(405).send('GETting all URLs is not supported');
 });
-
 
 /**
  * GET long URLs.
  * Pass in a short URL and return the mapped long URL
  */
-router.get('/:url', function (req, res, next) {
+router.get('/:url', (req, res) => {
   const shortURL = req.params.url;
   // TODO: if short-URL doesn't exist, send 404, else send 200 and long-url
   const longURL = urlStore.getLongURL(shortURL);
@@ -33,7 +32,7 @@ router.get('/:url', function (req, res, next) {
  *
  * Returns 200 if the URL is already mapped or 201 if the mapping was created
  */
-router.post('/:url', function (req, res, next) {
+router.post('/:url', (req, res) => {
   const longURL = req.params.url;
 
   const {

@@ -1,9 +1,14 @@
-
 // TODO: implement Storage and mapping
 
-const getLongURL = shortURL => '';
+const getLongURL = (shortURL) => {
+  console.log(shortURL);
+  return '';
+};
 
-const getShortURL = longURL => ({shortUrl: '', urlExists: false });
+const getShortURL = (longURL) => {
+  console.log(longURL);
+  return { shortUrl: '', urlExists: false };
+};
 
 module.exports = {
   getLongURL,
