@@ -39,6 +39,7 @@ router.post('/:url', (req, res) => {
     urlExists = false,
   } = urlStore.getShortURL(longURL);
 
+  // TODO: need to add host path and port to this so you can just copy paste in
   if (urlExists) {
     res.status(200).send(shortURL);
   } else {
